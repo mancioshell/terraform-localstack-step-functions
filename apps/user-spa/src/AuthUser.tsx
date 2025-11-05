@@ -1,0 +1,34 @@
+import React from "react";
+import { useAuth } from "react-oidc-context";
+import { config } from "./config";
+
+export function AuthUser() {
+  const auth = useAuth();
+  const [data, setData] = React.useState(null);
+
+  React.useEffect(() => {
+    (async () => {
+      try {
+        const token = auth.user?.access_token;
+        const response = await fetch(`${config.serverURL}/v1/step-functions`, {
+          mode: "cors",
+          method: "POST",
+          body: JSON.stringify({ inputX: "Bella", inputY: "Charlie" }),
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        });
+        setData(await response.json());
+      } catch (e) {
+        console.error(e);
+      }
+    })();
+  }, [auth]);
+
+  if (!data) {
+    return <div>Loading...</div>;
+  }
+
+  return <div>{JSON.stringify(data)}</div>;
+}

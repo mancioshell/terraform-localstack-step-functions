@@ -1,0 +1,22 @@
+{
+  "name": "user-spa",
+  "private": true,
+  "version": "0.0.0",
+  "source": "src/index.html",
+  "scripts": {
+    "build": "dotenv -- parcel build"
+  },
+  "dependencies": {
+    "oidc-client-ts": "^3.3.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-oidc-context": "^3.3.0",
+    "react-router": "^7.9.1"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "dotenv-cli": "^10.0.0",
+    "parcel": "2.16.1"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "name": "adam",
+  "packageManager": "yarn@4.9.1",
+  "scripts": {
+    "prebuild": "rm -rf dist",
+    "build": "esbuild src/index.ts --bundle --minify --sourcemap --platform=node --target=es2020 --outfile=dist/lambda.js"
+  },
+  "devDependencies": {
+    "@repo/typescript-config": "*",
+    "@types/aws-lambda": "^8.10.157",
+    "esbuild": "^0.25.12",
+    "typescript": "^5.9.3"
+  }
+}
